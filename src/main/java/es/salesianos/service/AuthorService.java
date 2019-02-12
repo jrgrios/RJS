@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import es.salesianos.assembler.UserAssembler;
 import es.salesianos.model.User;
+import es.salesianos.model.UserAccount;
+
 import es.salesianos.repository.UserRepository;
 
 @Component
@@ -35,9 +37,27 @@ public class AuthorService implements Service {
 		}
 	}
 
+	public void insertOrupdateUserAccount(UserAccount user) {
+		if (!repository.searchAccount(user).isPresent()) {
+			repository.insertAccount(user);
+		} else {
+			repository.updateAccount(user);
+		}
+	}
+
 	@Override
 	public List<User> listAllUser() {
 		return repository.listAllUsers();
+	}
+
+	@Override
+	public List<UserAccount> listAllAccounts() {
+		return repository.listAllAccounts();
+	}
+
+	@Override
+	public List<Integer> listAllSuma() {
+		return repository.listAllSuma();
 	}
 
 	public UserAssembler getAssembler() {

@@ -4,11 +4,19 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import es.salesianos.model.UserAccount;
 import es.salesianos.model.User;
+
 
 public interface Service {
 
 	void createNewUserFromRequest(HttpServletRequest req);
+
+	void insertOrupdateUserAccount(UserAccount user);
+
+	List<UserAccount> listAllAccounts();
+
+	List<Integer> listAllSuma() ;
 
 	void insertOrupdateUser(User user);
 

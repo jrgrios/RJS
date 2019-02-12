@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.salesianos.model.User;
+import es.salesianos.model.UserAccount;
 import es.salesianos.service.Service;
 
 @RestController
@@ -33,15 +33,21 @@ public class PersonController {
 
 	@PostMapping
 	@RequestMapping(value = "/create")
-	public ResponseEntity<User> create(@RequestBody User person) {
-		service.insertOrupdateUser(person);
-		return new ResponseEntity<>(person, HttpStatus.CREATED);
+	public ResponseEntity<UserAccount> create(@RequestBody UserAccount user) {
+		service.insertOrupdateUserAccount(user);
+		return new ResponseEntity<>(user, HttpStatus.CREATED);
 	}
 
 	@PostMapping
 	@RequestMapping(value = "/list")
-	public ResponseEntity<List<User>> ListAll() {
-		return new ResponseEntity<>(service.listAllUser(), HttpStatus.CREATED);
+	public ResponseEntity<List<UserAccount>> ListAll() {
+		return new ResponseEntity<>(service.listAllAccounts(), HttpStatus.CREATED);
+	}
+
+	@PostMapping
+	@RequestMapping(value = "/listSuma")
+	public ResponseEntity<List<Integer>> ListAllSuma() {
+		return new ResponseEntity<>(service.listAllSuma(), HttpStatus.CREATED);
 	}
 
 

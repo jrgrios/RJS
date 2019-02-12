@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import es.salesianos.assembler.UserAssembler;
 import es.salesianos.model.User;
+import es.salesianos.model.UserAccount;
 import es.salesianos.repository.UserRepository;
 
 @Component
@@ -29,8 +30,17 @@ public class ErrorService implements Service {
 		throw new RuntimeException("he reventado");
 	}
 
+	public void insertOrupdateUserAccount(UserAccount user) {
+		throw new RuntimeException("he reventado");
+	}
+
 	@Override
 	public List<User> listAllUser() {
+		throw new RuntimeException("he reventado");
+	}
+
+	@Override
+	public List<UserAccount> listAllAccounts() {
 		throw new RuntimeException("he reventado");
 	}
 
