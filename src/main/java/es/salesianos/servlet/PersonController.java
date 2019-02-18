@@ -44,11 +44,4 @@ public class PersonController {
 		return new ResponseEntity<>(service.listAllAccounts(), HttpStatus.CREATED);
 	}
 
-	@PostMapping
-	@RequestMapping(value = "/listSuma")
-	public ResponseEntity<List<Integer>> ListAllSuma() {
-		return new ResponseEntity<>(service.listAllSuma(), HttpStatus.CREATED);
-	}
-
-
 }

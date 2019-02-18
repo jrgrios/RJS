@@ -16,8 +16,6 @@ public interface Service {
 
 	List<UserAccount> listAllAccounts();
 
-	List<Integer> listAllSuma() ;
-
 	void insertOrupdateUser(User user);
 
 	List<User> listAllUser();

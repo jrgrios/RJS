@@ -100,12 +100,6 @@ public class UserRepository {
 		return users;
 	}
 
-	public List<Integer> listAllSuma() {
-		String sql = "SELECT SUM(Saldo) FROM cuentas";
-		List<Integer> total = jdbcTemplate.query(sql, new BeanPropertyRowMapper(UserAccount.class));
-		return total;
-	}
-
 	public void delete(String tablename, Integer id) {
 		// log.debug("id: " + id.toString());
 		log.debug("tablename: " + tablename);

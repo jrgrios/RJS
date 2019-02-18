@@ -25074,8 +25074,7 @@
 			var _this = _possibleConstructorReturn(this, (UserAccount.__proto__ || Object.getPrototypeOf(UserAccount)).call(this, props));
 	
 			_this.state = {
-				users: [],
-				total: ""
+				users: []
 			};
 			return _this;
 		}
@@ -25091,20 +25090,15 @@
 					}).then(function (user) {
 						_this2.setState({ users: user });
 					});
-	
-					fetch('/api/v1/user/listSuma/').then(function (response) {
-						return response.json();
-					}).then(function (total) {
-						_this2.setState({ total: total });
-					});
 				}
-	
 				if (this.state.users.length > 0) {
 	
+					var totalDelSaldo = 0;
+					for (var i = 0; i < this.state.users.length; i++) {
+						totalDelSaldo += this.state.users[i].saldo;
+					}
+	
 					var userItems = [];
-					///prueba mia JR
-					var totalCalculado = this.state.total;
-					//
 					this.state.users.forEach(function (usuario) {
 						userItems.push(_react2.default.createElement(_AccountItem2.default, { user: usuario }));
 					});
@@ -25113,7 +25107,7 @@
 						"div",
 						null,
 						userItems,
-						_react2.default.createElement(_UserCount2.default, { count: userItems.length, total: totalCalculado })
+						_react2.default.createElement(_UserCount2.default, { count: userItems.length, total: totalDelSaldo })
 					);
 				} else {
 					return _react2.default.createElement(
@@ -25243,7 +25237,12 @@
 	        " saldo: ",
 	        user.saldo,
 	        _react2.default.createElement("br", null),
-	        _react2.default.createElement(_Delete2.default, { id: user.numeroCuenta })
+	        _react2.default.createElement(_Delete2.default, { id: user.numeroCuenta }),
+	        _react2.default.createElement(
+	          "button",
+	          { onclick: "myFunction()" },
+	          "Click me"
+	        )
 	      );
 	    }
 	  }]);

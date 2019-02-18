@@ -7,8 +7,7 @@ export default class UserAccount extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {
-			 users: [] ,
-			 total :""
+			 users: [] 
 		}
 	}
 
@@ -21,23 +20,17 @@ export default class UserAccount extends React.Component {
 			.then((user) => {
         		this.setState({ users: user })
 			  })
-			  
-			fetch('/api/v1/user/listSuma/')
-			.then((response) => {
-				return response.json();
-			})			
-			.then((total) => {
-        		this.setState({ total: total })
-      		})
+
 			
 		}
-
 		if (this.state.users.length > 0) {
+
+			var totalDelSaldo = 0;
+			for (var i = 0; i < this.state.users.length; i++) {
+				totalDelSaldo+=this.state.users[i].saldo;
+			}
 		
 			var userItems = [];
-			///prueba mia JR
-			var totalCalculado=this.state.total;
-			//
 			this.state.users.forEach(
 				(usuario) => {
 					userItems.push(<AccountItem user={usuario} />)
@@ -48,7 +41,7 @@ export default class UserAccount extends React.Component {
 				<div>
 					{userItems}
 					
-					<UserCount  count={userItems.length} total={totalCalculado}/>
+					<UserCount  count={userItems.length} total={totalDelSaldo}/>
 				</div>
 			)
 			

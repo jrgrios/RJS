@@ -55,11 +55,6 @@ public class AuthorService implements Service {
 		return repository.listAllAccounts();
 	}
 
-	@Override
-	public List<Integer> listAllSuma() {
-		return repository.listAllSuma();
-	}
-
 	public UserAssembler getAssembler() {
 		return assembler;
 	}

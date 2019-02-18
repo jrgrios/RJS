@@ -14,6 +14,9 @@ export default class AccountItem extends React.Component {
       <div class="well col-md-4 col-md-offset-4" key={user.numeroCuenta}>
         Numero de cuenta: {user.numeroCuenta} saldo: {user.saldo}<br/>
         <Delete id={user.numeroCuenta}/>
+
+        <button onclick="myFunction()">Click me</button>
+
       </div> 
     );
   }
